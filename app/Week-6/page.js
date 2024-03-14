@@ -19,6 +19,7 @@ export default function Page() {
       <h1 className='font-bold text-4xl p-2'>Shopping list</h1>
       <NewItem addItem={handleAddItem} />
       <ItemList items={items}/>
+      
     </main>
   );
 }
