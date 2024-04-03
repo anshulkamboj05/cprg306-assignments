@@ -1,0 +1,6 @@
+{
+    "editor.suggest.preview": false,
+    "workbench.view.alwaysShowHeaderActions": false,
+    "workbench.preferredDarkColorTheme": "Default High Contrast",
+    "workbench.preferredLightColorTheme": "Default Dark+"
+}
