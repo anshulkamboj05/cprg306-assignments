@@ -1,42 +1,43 @@
 import Link from "next/link"
 
-export default  function home(){
-  return(
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 max-w-5x1 w-full items-center justify-between font-mono text-sm 1">
-        <h1 className="text-4xl font-bold mb-5"> CPRG 306: Web Development 2 - Assignments</h1>
-      <div>
-        <li>
-          <Link href='./week-2'>Week-2 Page</Link>
-          </li>
-          <li>
-            <Link href='./Week-3'>Week-3 Page</Link>
-          </li>
-          <li>
-            <Link href = './Week-4'>Week-4 Page</Link>
-          </li>
-          <li>
-            <Link href = './Week-5'>Week-5 Page </Link>
-          </li>
-          <li>
-            <Link href = './Week-6'>Week-6 Page</Link>
-          </li>
-          <li>
-            <Link href ='./Week-7'>Week-7 Page</Link>
-          </li>
-          <li>
-            <Link href ='./week-8'>Week-8 Page</Link>
-          </li>
-          <li>
-            <Link href ='./Week-10'>Week-10 Page</Link>
-          </li>
-          
+export default function Home() {
+  return (
+    <main className="bg-black flex min-h-screen flex-col items-center justify-between p-24 bg">
+      <div className="z-10 max-w-5xl w-full font-mono text-lg flex flex-col ">
+        
+        <div className="text-white text-2xl font-bold">
+          <h1>CPRG 306: Web Development 2 - Assignments</h1>
+        </div>
+
+        <div className="flex flex-col mt-4">
+          <Link href="/week-2" className="text-white hover:text-blue-200 hover:underline mb-2">
+            Week-2 page
+          </Link>
+          <Link href="/week-3" className="text-white hover:text-blue-200 hover:underline mb-2">
+            Week-3 page
+          </Link>
+          <Link href="/week-4" className="text-white hover:text-blue-200 hover:underline mb-2">
+            Week-4 page
+          </Link>
+          <Link href="/week-5" className="text-white hover:text-blue-200 hover:underline mb-2">
+            Week-5 page
+          </Link>
+          <Link href="/week-6" className="text-white hover:text-blue-200 hover:underline mb-2">
+            Week-6 page
+          </Link>
+          <Link href="/week-7" className="text-white hover:text-blue-200 hover:underline mb-2">
+            Week-7 page
+          </Link>
+          <Link href="/week-8" className="text-white hover:text-blue-200 hover:underline mb-2">
+            Week-8 page
+          </Link>
+          <Link href="/week-10" className="text-white hover:text-blue-200 hover:underline mb-2">
+            Week-10 page
+          </Link>
+        </div>
+
 
       </div>
-
-    </div>
     </main>
-  );
+  )
 }
-
-
