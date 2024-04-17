@@ -1,18 +1,35 @@
 "use client"
 
-import React, { useState } from "react";
-import NewItem from "./new-item";
-import MealIdeas from "./meal-ideas"; 
-import ItemList from "./item-list";
-import { getItems, addItem } from "./_services/shopping-list-service";
+import MealIdeas from './meal-ideas'; 
+import { useState } from 'react';
+
+import ItemList from './item-list';
+import NewItem from './new-item';
+// import itemsData from './items.json';
+import { getItems, addItem } from "../_services/shopping-list-service";
 
 
 function Page() {
-  const [items, setItems] = useState(itemsData);
+  const [items, setItems] = useState([]);
   const [selectedItemName, setSelectedItemName] = useState("");
 
+  const userId = "currentUserUID";
+
+  useEffect(() => {
+    if (userId) {
+      getItems(userId)
+        .then((fetchedItems) => setItems(fetchedItems))
+        .catch((error) => console.error("Error fetching items:", error));
+    }
+  }, [userId]);
+
   const handleAddItem = (newItem) => {
-    setItems((prevItems) => [...prevItems, newItem]);
+    addItem(userId, newItem)
+      .then((newItemId) => {
+        const newItemWithId = { ...newItem, id: newItemId };
+        setItems((prevItems) => [...prevItems, newItemWithId]);
+      })
+      .catch((error) => console.error("Error adding item:", error));
   };
 
   const handleItemSelect = (item) => {
@@ -20,32 +37,14 @@ function Page() {
     setSelectedItemName(cleanedName);
   };
 
-   function ShoppingList({ user }) {
-    const [items, setItems] = useState([]);
-  
-  
-  useEffect(() => {
-    const loadItems = async () => {
-      const items = await getItems(user.uid);
-      setItems(items);
-    };
-    loadItems();
-  }, [user.uid]);
-
-  const handleAddItem = async (itemName) => {
-    const newItem = { name: itemName };
-    const newItemId = await addItem(user.uid, newItem);
-    const updatedItems = [...items, { id: newItemId, data: newItem }];
-    setItems(updatedItems);
-  };
-
-
   return (
-    <main className="bg-white-800 text-black flex">
+    <main className="bg-[#2a628f] flex">
       <div>
-        <h1 className="text-3xl font-bold mb-2 ml-16 p-4">Shopping List</h1>
-        <h2 className="text-xl font-bold ml-8">Add a new Item</h2>
-        <div className="ml-8">
+        <h1 className="text-3xl font-bold mb-2 ml-16 p-4 text-white">
+          Shopping List
+        </h1>
+        <h2 className="text-xl font-bold ml-8 text-white">Add a new Item</h2>
+        <div>
           <NewItem onAddItem={handleAddItem} />
           <ItemList items={items} onItemSelect={handleItemSelect} />
         </div>
@@ -54,5 +53,3 @@ function Page() {
     </main>
   );
 }
-}
-export default Page;

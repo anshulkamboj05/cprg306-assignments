@@ -4,7 +4,7 @@ import { useState } from 'react';
 
 import ItemList from './item-list';
 import NewItem from './new-item';
-import itemsData from './item.json';
+import itemsData from './Item.json';
 
 export default function Page() {
 

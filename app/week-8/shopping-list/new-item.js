@@ -1,5 +1,5 @@
-"use client";
 
+"use client";
 import { useState } from "react";
 
 const NewItem = ({ addItem }) => {
@@ -13,7 +13,7 @@ const NewItem = ({ addItem }) => {
         
         console.log(item)
         
-        alert(`Name: ${name}, Quantity:  ${quantity}, Category: ${category}`);
+        alert(`Name: ${name}, Quantity: ${quantity}, Category: ${category}`);
 
         const id = Math.random().toString(36); //this will generate a random id. 
         addItem({id, name, quantity, category});
@@ -26,18 +26,18 @@ const NewItem = ({ addItem }) => {
     
     return (
         
-        <form onSubmit={handleSubmit} className="m-2 p-8 bg-slate-500 flex flex-col w-3/2">
-        <label className="p-1 ">
+        <form onSubmit={handleSubmit} className="m-4 p-4 bg-slate-500 flex flex-col w-1/2">
+        <label className="p-2 ">
             Name:
-            <input placeholder="Item name" type="text" value={name} onChange={(e) => setName(e.target.value)} required className="text-black "/>
+            <input placeholder="Item name" type="text" value={name} onChange={(e) => setName(e.target.value)} required className="text-black flex-grow"/>
         </label>
         <label className="p-2">
             Quantity:
-            <input type="number" value={quantity} onChange={(e) => setQuantity(e.target.value)} min={1} max={99} required className="text-black"/>
+            <input type="number" value={quantity} onChange={(e) => setQuantity(e.target.value)} min={1} max={99} required className="text-black flex-grow-2"/>
         </label>
         <label className="p-2">
             Category:
-            <select  value={category} onChange={(e) => setCategory(e.target.value)} className="text-black">
+            <select  value={category} onChange={(e) => setCategory(e.target.value)} className="text-black flex-grow-2">
                 <option value="produce">Produce</option>
                 <option value="dairy">Dairy</option>
                 <option value="bakery">Bakery</option>
@@ -56,4 +56,4 @@ const NewItem = ({ addItem }) => {
 );
 };
 
-export default NewItem
+export default NewItem;
