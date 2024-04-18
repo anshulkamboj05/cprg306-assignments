@@ -5,7 +5,6 @@ import { useState } from 'react';
 
 import ItemList from './item-list';
 import NewItem from './new-item';
-// import itemsData from './items.json';
 import { getItems, addItem } from "../_services/shopping-list-service";
 
 
